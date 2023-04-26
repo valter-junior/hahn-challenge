@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  web:
+      container_name: hahn
+      build:
+        context: .
+        dockerfile: Dockerfile
+
+      volumes:
+        - .:/front
+      ports:
+        - 4200:4200
+     
+      restart: always
+      
