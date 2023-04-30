@@ -17,7 +17,7 @@ namespace hahn.Domain.Entities.OrderAggregate
         public Buyer Buyer { get; set; }
         public Guid BuyerAddressId { get; set; }
         public BuyerAddress BuyerAddress { get; set; }
-        public List<OrderItems> Items { get; set; }
+        public List<Product> Products { get; set; }
 
     }
 }

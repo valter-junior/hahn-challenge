@@ -1,9 +1,9 @@
-﻿using hahn.Domain.Entities.OrderAggregate;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using hahn.Domain.Entities.OrderAggregate;
 
 namespace hahn.Domain.Entities
 {
@@ -15,6 +15,6 @@ namespace hahn.Domain.Entities
         public float Value { get; set; }
         public Guid ManagerId { get; set; }
         public Manager Manager { get; set; }
-        public List<OrderItems>? Orders { get; set; }
+        public List<Order>? Orders { get; set; }
     }
 }
