@@ -12,6 +12,6 @@ namespace hahn.Domain.Entities.OrderAggregate
         public Order Order { get; set; }
         public Guid ProductId { get; set; }
         public Product Product { get; set; }
-        public DateTime Created { get; set; }
+
     }
 }

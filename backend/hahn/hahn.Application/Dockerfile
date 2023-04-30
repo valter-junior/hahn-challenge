@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["hahm.application/hahm.application.csproj", "hahm.application/"]
-RUN dotnet restore "hahm.application/hahm.application.csproj"
+COPY ["hahn.Application/hahn.Application.csproj", "hahn.Application/"]
+RUN dotnet restore "hahn.Application/hahn.Application.csproj"
 COPY . .
-WORKDIR "/src/hahm.application"
-RUN dotnet build "hahm.application.csproj" -c Release -o /app/build
+WORKDIR "/src/hahn.Application"
+RUN dotnet build "hahn.Application.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "hahm.application.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "hahn.Application.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "hahm.application.dll"]
+ENTRYPOINT ["dotnet", "hahn.Application.dll"]
