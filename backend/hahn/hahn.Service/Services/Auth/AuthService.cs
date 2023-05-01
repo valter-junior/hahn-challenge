@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace hahn.Domain.Entities.OrderAggregate
+namespace hahn.Service.Services
 {
-    public class OrderAddress
+    public class AuthService
     {
     }
 }

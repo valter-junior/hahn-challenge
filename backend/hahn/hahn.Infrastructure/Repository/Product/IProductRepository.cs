@@ -16,5 +16,6 @@ namespace hahn.Infrastructure.Repositories
         Task<Product> AddAsync(Product entity);
         Task<Product> UpdateAsync(Product entity);
         Task<string> DeleteAsync(Product entity);
+       
     }
 }
