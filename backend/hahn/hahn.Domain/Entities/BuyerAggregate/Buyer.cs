@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using hahn.Service.Models;
 using hahn.Domain.Entities.OrderAggregate;
+using static hahn.Service.Models.BuyerModels;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace hahn.Domain.Entities.BuyerAggregate
 {
@@ -12,5 +10,7 @@ namespace hahn.Domain.Entities.BuyerAggregate
         public DateTime Created { get; set; }
         public List<Order>? Orders { get; set; }
         public List<BuyerAddress> BuyerAddresses { get; set; }
+
+ 
     }
 }
