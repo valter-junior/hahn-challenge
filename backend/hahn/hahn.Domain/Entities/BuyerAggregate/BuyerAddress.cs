@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using hahn.Domain.Entities.OrderAggregate;
-using static hahn.Service.Models.BuyerModels;
 
 namespace hahn.Domain.Entities.BuyerAggregate
 {
