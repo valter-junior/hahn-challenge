@@ -1,6 +1,4 @@
-﻿using hahn.Service.Models;
-using hahn.Domain.Entities.OrderAggregate;
-using static hahn.Service.Models.BuyerModels;
+﻿using hahn.Domain.Entities.OrderAggregate;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace hahn.Domain.Entities.BuyerAggregate
