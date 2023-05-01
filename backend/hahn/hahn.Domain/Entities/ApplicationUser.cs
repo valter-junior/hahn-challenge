@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using hahn.Domain.Enums;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,6 +14,7 @@ namespace hahn.Domain.Entities
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public eUserType UserType { get; set; }
         [NotMapped]
         public string Password { get; set; }
 
