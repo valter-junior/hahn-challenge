@@ -16,7 +16,7 @@ namespace hahn.Service.Models
         {
             public DateTime Created { get; set; }
             public float Price { get; set; }
-            public Guid BuyerId { get; set; }
+            public string BuyerId { get; set; }
             public Guid BuyerAddressId { get; set; }
             public List<OrderProducts> Products { get; set; }
 

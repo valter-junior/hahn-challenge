@@ -15,8 +15,8 @@ namespace hahn.Domain.Entities.BuyerAggregate
         public string State { get; set; }
         public string Zipcode { get; set; }
         public string Country { get; set; }
-        public Guid BuyerId { get; set; }
-        public Buyer Buyer { get; set; }
+        public string BuyerId { get; set; }
+        public Buyer? Buyer { get; set; }
         public List<Order>? Orders { get; set; }
 
     }

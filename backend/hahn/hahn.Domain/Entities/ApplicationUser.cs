@@ -12,8 +12,6 @@ namespace hahn.Domain.Entities
     public class ApplicationUser : IdentityUser<string>
     {
         public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
         public eUserType UserType { get; set; }
         [NotMapped]
         public string Password { get; set; }

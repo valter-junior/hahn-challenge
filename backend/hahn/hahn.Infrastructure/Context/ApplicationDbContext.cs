@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,14 +30,32 @@ namespace hahn.Infrastructure.Context
             builder.Entity<ApplicationUser>().Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Entity<Product>().Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Entity<Order>().Property(x => x.Id).ValueGeneratedOnAdd();
-            builder.Entity<Manager>().HasMany(x => x.Products).WithOne(x => x.Manager).OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<Buyer>().HasMany(x => x.Orders).WithOne(x => x.Buyer).OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<Buyer>().HasMany(x => x.BuyerAddresses).WithOne(x => x.Buyer).OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<BuyerAddress>().HasMany(x => x.Orders).WithOne(x => x.BuyerAddress).OnDelete(DeleteBehavior.Cascade);
-            builder.Entity<Product>().HasMany(x => x.Orders).WithMany(x => x.Products).UsingEntity<OrderItems>(
-                l => l.HasOne<Order>().WithMany().HasForeignKey(e => e.OrderId),
-                r => r.HasOne<Product>().WithMany().HasForeignKey(e => e.ProductId));
 
+            builder.Entity<Manager>().HasMany(x => x.Products).WithOne(x => x.Manager)
+                .HasForeignKey(x => x.ManagerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Buyer>().HasMany(x => x.Orders).WithOne(x => x.Buyer)
+                .HasForeignKey(x => x.BuyerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Buyer>().HasMany(x => x.BuyerAddresses).WithOne(x => x.Buyer)
+                .HasForeignKey(x => x.BuyerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<BuyerAddress>().HasMany(x => x.Orders).WithOne(x => x.BuyerAddress)
+                .HasForeignKey(x => x.BuyerAddressId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Product>().HasMany(x => x.OrdersItem).WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Order>().HasMany(x => x.Items).WithOne(x => x.Order)
+                .HasForeignKey(x => x.OrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<OrderItems>().HasKey(x => new { x.OrderId, x.ProductId });
 
         }
 
