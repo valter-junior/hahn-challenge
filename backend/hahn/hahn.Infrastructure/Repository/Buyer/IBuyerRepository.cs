@@ -1,5 +1,7 @@
-﻿using hahn.Domain.Entities.BuyerAggregate;
+﻿using hahn.Domain.Entities;
+using hahn.Domain.Entities.BuyerAggregate;
 using hahn.Infrastructure.Repository.Base;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,9 @@ namespace hahn.Infrastructure.Repositories
     public interface IBuyerRepository : IRepository<Buyer>
     {
         Task<IEnumerable<Buyer>> GetAllAsync(params Expression<Func<Buyer, object>>[] includes);
-        Task<Buyer> AddAsync(Buyer entity);
+        Task<Buyer?> GetByIdAsync(string? id, params Expression<Func<Buyer, object>>[] includes);
+        Task<bool> VerifyIfEmailIsUnique(string email);
+        Task<IdentityResult> AddBuyerAsync(Buyer buyer, string password);
         Task<Buyer> UpdateAsync(Buyer entity);
         Task<string> DeleteAsync(Buyer entity);
     }
