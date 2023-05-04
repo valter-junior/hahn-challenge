@@ -54,6 +54,7 @@ namespace hahn.Application.Controllers
                 };
 
                 var createPowerUser = await _userManager.CreateAsync(poweruser, "hahn123");
+                await _db.SaveChangesAsync();
                 return "Manager created";
             }
             catch (Exception e)

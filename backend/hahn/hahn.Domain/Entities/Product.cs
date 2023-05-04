@@ -13,8 +13,8 @@ namespace hahn.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public float Value { get; set; }
-        public Guid ManagerId { get; set; }
-        public Manager Manager { get; set; }
-        public List<Order>? Orders { get; set; }
+        public string ManagerId { get; set; }
+        public Manager? Manager { get; set; }
+        public List<OrderItems>? OrdersItem { get; set; }
     }
 }
