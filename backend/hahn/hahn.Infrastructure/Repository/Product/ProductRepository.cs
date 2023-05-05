@@ -1,5 +1,4 @@
 ﻿using hahn.Domain.Entities;
-using hahn.Domain.Entities.BuyerAggregate;
 using hahn.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -24,7 +23,7 @@ namespace hahn.Infrastructure.Repositories
 
         public async Task<IEnumerable<Product>> GetAllAsync(params Expression<Func<Product, object>>[] includes)
         {
-            return await _db.Products.ToListAsync();
+            return await _db.Products.Include(x => x.OrdersItem).ToListAsync();
         }
 
         public async Task<Product?> GetByIdAsync(Guid? id, params Expression<Func<Product, object>>[] includes)

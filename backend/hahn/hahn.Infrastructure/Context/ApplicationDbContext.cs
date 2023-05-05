@@ -28,6 +28,7 @@ namespace hahn.Infrastructure.Context
         {
             base.OnModelCreating(builder);
             builder.Entity<ApplicationUser>().Property(x => x.Id).ValueGeneratedOnAdd();
+            builder.Entity<BuyerAddress>().Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Entity<Product>().Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Entity<Order>().Property(x => x.Id).ValueGeneratedOnAdd();
 
@@ -61,6 +62,7 @@ namespace hahn.Infrastructure.Context
 
         public virtual DbSet<Manager> Manager { get; set; }
         public virtual DbSet<Buyer> Buyers { get; set; }
+        public virtual DbSet<BuyerAddress> BuyerAddresses { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
     }
