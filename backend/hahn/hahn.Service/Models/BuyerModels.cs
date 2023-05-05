@@ -1,6 +1,5 @@
 ﻿
 using FluentValidation;
-using hahn.Domain.Entities;
 using hahn.Domain.Entities.BuyerAggregate;
 using hahn.Domain.Enums;
 

@@ -1,16 +1,15 @@
 ﻿using hahn.Domain.Entities;
 using hahn.Domain.Entities.BuyerAggregate;
 using hahn.Infrastructure.Repository.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using System.Linq.Expressions;
 
 namespace hahn.Infrastructure.Repositories
 {
-    public interface IManagerRepository: IRepository<Manager>
+    public interface IManagerRepository
     {
-        Task<Buyer> AddAsync(Buyer entity);
+        Task<IdentityResult> AddManagerAsync(Manager manager, string password);
+        Task<bool> VerifyIfEmailIsUnique(string email);
+
     }
 }

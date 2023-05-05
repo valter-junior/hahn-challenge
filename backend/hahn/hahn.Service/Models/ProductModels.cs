@@ -17,7 +17,7 @@ namespace hahn.Service.Models
             public string Name { get; set; }
             public string Description { get; set; }
             public float Value { get; set; }
-            public Guid ManagerId { get; set; }
+            public string ManagerId { get; set; }
 
             public class AddProductModelValidator : AbstractValidator<AddProduct>
             {
@@ -41,8 +41,44 @@ namespace hahn.Service.Models
                 {
                     Name = model.Name,
                     Description = model.Description,
-                    Value = model.Value
+                    Value = model.Value,
+                    ManagerId = model.ManagerId
 
+                };
+            }
+        }
+
+        public class UpdateProduct
+        {
+            public Guid Id { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public float Value { get; set; }
+
+            public class UpdateProductModelValidator : AbstractValidator<UpdateProduct>
+            {
+                public UpdateProductModelValidator()
+                {
+                    RuleFor(x => x.Id)
+                       .NotNull().NotEmpty().WithMessage("Please specify the product id.");
+                    RuleFor(x => x.Name)
+                       .NotNull().NotEmpty().WithMessage("Please specify a name.");
+                    RuleFor(x => x.Description)
+                       .NotNull().NotEmpty().WithMessage("Please specify a description.");
+                    RuleFor(x => x.Value)
+                       .NotNull().NotEmpty().WithMessage("Please specify a phone a password.");
+
+                }
+            }
+
+            public static implicit operator Product(UpdateProduct model)
+            {
+                return new Product
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                    Description = model.Description,
+                    Value = model.Value,
                 };
             }
         }

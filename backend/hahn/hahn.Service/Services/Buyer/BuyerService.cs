@@ -25,22 +25,6 @@ namespace hahn.Service.Services
 
         }
 
-        public async Task<ResponseModel<IEnumerable<Buyer>>> GetAllAsync()
-        {
-            try
-            {
-
-                var getBuyers = await _repository.GetAllAsync();
-
-                return ResponseBuilder.OkResponse(getBuyers);
-            }
-            catch (Exception e)
-            {
-                return ResponseBuilder.ErrorResponse().WithMessage(e.Message);
-            }
-
-        }
-
         public async Task<ResponseModel<IdentityResult>> AddAsync(AddBuyer model)
         {
             try
@@ -59,6 +43,22 @@ namespace hahn.Service.Services
             {
                 return ResponseBuilder.ErrorResponse().WithMessage(e.Message);
             }
+        }
+
+        public async Task<ResponseModel<IEnumerable<Buyer>>> GetAllAsync()
+        {
+            try
+            {
+
+                var getBuyers = await _repository.GetAllAsync();
+
+                return ResponseBuilder.OkResponse(getBuyers);
+            }
+            catch (Exception e)
+            {
+                return ResponseBuilder.ErrorResponse().WithMessage(e.Message);
+            }
+
         }
 
         public async Task<ResponseModel<Buyer>> UpdateAsync(UpdateBuyer model)

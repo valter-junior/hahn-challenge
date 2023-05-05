@@ -19,13 +19,6 @@ namespace hahn.Application.Controllers
             _buyerService = buyerService;
         }
 
-        [HttpGet]
-        [Route("list-all")]
-        public async Task<IActionResult> GetAllAsync()
-        {
-            return await _buyerService.GetAllAsync();
-        }
-
         [HttpPost]
         [Route("add")]
         public async Task<IActionResult> Add(AddBuyer buyer)
@@ -37,6 +30,13 @@ namespace hahn.Application.Controllers
                 return await _buyerService.AddAsync(buyer);
 
             return ResponseBuilder.Response(400).WithMessages(result.Errors.Select(x => x.ErrorMessage).ToList());
+        }
+
+        [HttpGet]
+        [Route("list-all")]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            return await _buyerService.GetAllAsync();
         }
 
         [HttpPut]
