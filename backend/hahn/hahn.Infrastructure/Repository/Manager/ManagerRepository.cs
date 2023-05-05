@@ -1,31 +1,35 @@
 ﻿using hahn.Domain.Entities;
 using hahn.Domain.Entities.BuyerAggregate;
 using hahn.Infrastructure.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace hahn.Infrastructure.Repositories
 {
-    public class ManagerRepository
+    public class ManagerRepository: IManagerRepository
     {
         private readonly ApplicationDbContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ManagerRepository(ApplicationDbContext db)
+        public ManagerRepository(ApplicationDbContext db, UserManager<ApplicationUser> UserManager)
         {
             _db = db;
+            _userManager = UserManager;
+        }
+
+        public async Task<IdentityResult> AddManagerAsync(Manager manager, string password)
+        {
+
+            return await _userManager.CreateAsync(manager, password);
+        }
+
+        public async Task<bool> VerifyIfEmailIsUnique(string email)
+        {
+            var result = await _db.Users.AnyAsync(x => string.Equals(x.Email.ToLower(), email.ToLower()));
+            return result;
         }
 
       
-        public async Task<Manager> AddAsync(Manager entity)
-        {
-            await _db.AddAsync(entity);
-            await _db.SaveChangesAsync();
-            return entity;
-        }
-
     }
 }

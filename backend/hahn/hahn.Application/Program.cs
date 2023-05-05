@@ -60,11 +60,13 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IBuyerService, BuyerService>();
+builder.Services.AddScoped<IManagerService, ManagerService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
+builder.Services.AddScoped<IManagerRepository, ManagerRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
