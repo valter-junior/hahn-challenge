@@ -12,5 +12,8 @@ namespace hahn.Service.Services
     public interface IProductService
     {
         Task<ResponseModel<Product>> AddAsync(AddProduct model);
+        Task<ResponseModel<IEnumerable<Product>>> GetAllAsync();
+        Task<ResponseModel<Product>> UpdateAsync(UpdateProduct model);
+        Task<ResponseModel<string>> DeleteAsync(Guid id);
     }
 }

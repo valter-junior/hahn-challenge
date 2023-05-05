@@ -1,34 +1,31 @@
-﻿using hahn.Domain.Entities;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using hahn.Infrastructure.Context;
-using hahn.Domain.Enums;
+using hahn.Service.Services;
+using hahn.Infrastructure.Helpers;
 
 namespace hahn.Application.Controllers
 {
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
+    
     public class ManagerController : ControllerBase
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+
+        private readonly IManagerService _managerService;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly ApplicationDbContext _db;
-
-        public IConfiguration configuration { get; }
-
-        public ManagerController(IConfiguration Configuration, UserManager<ApplicationUser> userManager, ApplicationDbContext context, SignInManager<ApplicationUser> signinManager,
+      
+        public ManagerController(IManagerService managerService,
            RoleManager<IdentityRole> roleManager)
         {
-            configuration = Configuration;
-            _userManager = userManager;
-            _db = context;
+            
             _roleManager = roleManager;
+            _managerService = managerService;
 
         }
 
         [HttpGet]
-        [Route("admincreate")]
-        public async Task<ActionResult<string>> CreateRolesAndMasterUser()
+        [Route("add-manager")]
+        public async Task<IActionResult> CreateRolesAndMasterUser()
         {
             try
             {
@@ -43,23 +40,13 @@ namespace hahn.Application.Controllers
                     }
                 }
 
-                Manager poweruser = new()
-                {
-                    Name = "Manager",
-                    UserName = "Manager",
-                    Email = "test@hahn.io",
-                    UserType = eUserType.Manager,
-                    EmailConfirmed = true,
+                var createPowerUser = await _managerService.AddAsync();
 
-                };
-
-                var createPowerUser = await _userManager.CreateAsync(poweruser, "hahn123");
-                await _db.SaveChangesAsync();
-                return "Manager created";
+                return createPowerUser;
             }
             catch (Exception e)
             {
-                return e.ToString();
+                return ResponseBuilder.ErrorResponse().WithMessage(e.Message);
             }
 
         }
