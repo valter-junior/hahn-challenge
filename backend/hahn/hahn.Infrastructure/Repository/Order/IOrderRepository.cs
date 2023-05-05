@@ -10,10 +10,14 @@ using System.Threading.Tasks;
 
 namespace hahn.Infrastructure.Repositories
 {
-    public interface IOrderRepository: IRepository<Order>
+    public interface IOrderRepository : IRepository<Order>
     {
-        Task<IEnumerable<Order>> GetAllAsync(params Expression<Func<Order, object>>[] includes);
         Task<Order> AddAsync(Order entity);
+        Task<IEnumerable<Order>> GetAllAsync(params Expression<Func<Order, object>>[] includes);
+        Task<Order?> GetByIdAsync(Guid? id, params Expression<Func<Order, object>>[] includes);
+        Task<bool> GetBuyerById(string id);
+        Task<bool> GetBuyerAddressById(Guid id, string buyerId);
+        bool GetProductsById(Order entity);
         Task<Order> UpdateAsync(Order entity);
         Task<string> DeleteAsync(Order entity);
     }

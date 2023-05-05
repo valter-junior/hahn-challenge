@@ -12,5 +12,7 @@ namespace hahn.Service.Services
     public interface IOrderService
     {
         Task<ResponseModel<Order>> AddAsync(AddOrder model);
+        Task<ResponseModel<IEnumerable<Order>>> GetAllAsync();
+        Task<ResponseModel<string>> DeleteAsync(Guid id);
     }
 }

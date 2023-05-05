@@ -18,7 +18,7 @@ namespace hahn.Service.Models
             public float Price { get; set; }
             public string BuyerId { get; set; }
             public Guid BuyerAddressId { get; set; }
-            public List<OrderProducts> Products { get; set; }
+            public List<OrderProducts> Items { get; set; }
 
             public class AddOrderModelValidator : AbstractValidator<AddOrder>
             {
@@ -32,36 +32,54 @@ namespace hahn.Service.Models
                        .NotNull().NotEmpty().WithMessage("Please specify the buyer.");
                     RuleFor(x => x.BuyerAddressId)
                        .NotNull().NotEmpty().WithMessage("Please specify a phone a address.");
-                    RuleFor(x => x.Products)
-                      .NotNull().NotEmpty().WithMessage("Please specify a phone a product.");
+                    RuleFor(x => x.Items)
+                      .NotNull().NotEmpty().WithMessage("Please specify the products.");
 
                 }
             }
 
             public static implicit operator Order(AddOrder model)
             {
+                IEnumerable<OrderItems> orderItems = model.Items.Select(x => new OrderItems
+                {
+                    OrderId = x.OrderId,
+                    ProductId = x.ProductId,
+
+                });
+
                 return new Order
                 {
                     Created = model.Created,
                     Price = model.Price,
                     BuyerId = model.BuyerId,
                     BuyerAddressId = model.BuyerAddressId,
+                    Items = new List<OrderItems>(orderItems)
 
                 };
             }
         }
         public class OrderProducts
         {
-            public Guid Id { get; set; }
-            public class AddBuyerAddressesModelValidator : AbstractValidator<OrderProducts>
+            public Guid ProductId { get; set; }
+            public Guid OrderId { get; set; }
+            public class OrderProductModelValidator : AbstractValidator<OrderProducts>
             {
-                public AddBuyerAddressesModelValidator()
+                public OrderProductModelValidator()
                 {
-                    RuleFor(x => x.Id)
+                    RuleFor(x => x.ProductId)
                        .NotNull().NotEmpty().WithMessage("Please specify the product.");
-
-
                 }
+            }
+
+            public static implicit operator OrderItems(OrderProducts model)
+            {
+                return new OrderItems
+                {
+
+                    ProductId = model.ProductId,
+                    OrderId = model.OrderId,
+
+                };
             }
 
         }
