@@ -1,4 +1,6 @@
-﻿using hahn.Service.Services;
+﻿using hahn.Domain.Entities;
+using hahn.Service.Models;
+using hahn.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hahn.Application.Controllers
@@ -7,14 +9,21 @@ namespace hahn.Application.Controllers
     [Route("[controller]")]
     public class AuthController
     {
-        private readonly ILogger<AuthController> _logger;
+
         private readonly IAuthService _authService;
 
 
-        public AuthController(ILogger<AuthController> logger, IAuthService authService)
+        public AuthController(IAuthService authService)
         {
-            _logger = logger;
+
             _authService = authService;
+        }
+
+        [HttpPost]
+        [Route("token")]
+        public async Task<IActionResult> GetToken([FromBody] SignInModel usr)
+        {
+            return await _authService.GetTokenAsync(usr);
         }
     }
 }

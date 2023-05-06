@@ -8,6 +8,7 @@ using System.Text;
 using hahn.Service.Services;
 using hahn.Domain.Entities;
 using hahn.Infrastructure.Repositories;
+using hahn.Infrastructure.Repository.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,12 +63,14 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IBuyerService, BuyerService>();
 builder.Services.AddScoped<IManagerService, ManagerService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
 builder.Services.AddScoped<IManagerRepository, ManagerRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
