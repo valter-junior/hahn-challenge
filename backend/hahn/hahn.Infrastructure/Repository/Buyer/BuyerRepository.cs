@@ -35,7 +35,7 @@ namespace hahn.Infrastructure.Repositories
 
         public async Task<bool> VerifyIfEmailIsUnique(string email)
         {
-            var result = await _db.Users.AnyAsync(x => string.Equals(x.Email.ToLower(), email.ToLower()));
+            var result = await _db.Buyers.AnyAsync(x => string.Equals(x.Email.ToLower(), email.ToLower()));
             return result;
         }
 

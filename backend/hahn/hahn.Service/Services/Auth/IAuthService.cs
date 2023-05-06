@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using hahn.Infrastructure.Helpers;
+using hahn.Service.Models;
 
 namespace hahn.Service.Services
 {
     public interface IAuthService
     {
+        Task<ResponseModel<AuthenticateModel>> GetTokenAsync(SignInModel usr);
     }
 }
