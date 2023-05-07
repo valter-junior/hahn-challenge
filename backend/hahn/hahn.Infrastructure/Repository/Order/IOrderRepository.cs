@@ -19,6 +19,6 @@ namespace hahn.Infrastructure.Repositories
         Task<bool> GetBuyerAddressById(Guid id, string buyerId);
         bool GetProductsById(Order entity);
         Task<Order> UpdateAsync(Order entity);
-        Task<string> DeleteAsync(Order entity);
+        Task<Order> DeleteAsync(Order entity);
     }
 }

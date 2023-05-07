@@ -12,7 +12,7 @@ namespace hahn.Infrastructure.Repository.Base
         Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes);
         Task<T> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);
-        Task<string> DeleteAsync(T entity);
+        Task<T> DeleteAsync(T entity);
     }
 
 }

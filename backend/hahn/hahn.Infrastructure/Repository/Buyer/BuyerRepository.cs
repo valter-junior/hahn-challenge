@@ -60,12 +60,12 @@ namespace hahn.Infrastructure.Repositories
             await _db.SaveChangesAsync();
             return entity;
         }
-        public async Task<string> DeleteAsync(Buyer entity)
+        public async Task<Buyer> DeleteAsync(Buyer entity)
         {
 
             _db.Remove(entity);
             await _db.SaveChangesAsync();
-            return "Success!";
+            return entity;
 
         }
     }
