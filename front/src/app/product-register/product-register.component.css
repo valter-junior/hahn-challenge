@@ -1,7 +1,12 @@
-.example-spacer {
-    flex: 1 1 auto;
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
   }
-
+  
+  mat-form-field {
+    display: block;
+  }
   .button-color {
     color: white !important;
     background-color: #008aab !important;
