@@ -1,0 +1,28 @@
+<body class="no-scrollbars">
+    <mat-card style="top: 50px;">
+        <mat-card-content>
+            <form>
+                <h2 style="color: black;">Register</h2>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Name" name="name" required>
+                    <mat-error>
+                        Please provide a valid name
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Description" name="description" required>
+                    <mat-error>
+                        Please provide a valid description
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Value" type="value" name="value" required>
+                    <mat-error>
+                        Please provide a valid value
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button class="button-color">Create</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</body>
