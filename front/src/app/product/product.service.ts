@@ -19,11 +19,10 @@ export class ProductService {
   }
 
   getProductList(): Observable<any> {
-    console.log(environment.apiUrl)
     return this._http.get(environment.apiUrl + "product/list-all");
   }
 
   deleteProduct(id: string): Observable<any> {
-    return this._http.delete( environment.apiUrl + `product/delete?id=${id}`);
+    return this._http.delete(environment.apiUrl + `product/delete?id=${id}`);
   }
 }
