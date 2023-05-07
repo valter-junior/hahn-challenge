@@ -4,7 +4,7 @@ WORKDIR /front
 
 COPY . .
 
-RUN yarn global add @angular/cli @angular-devkit/build-angular && yarn
+RUN yarn global add @angular/cli @angular-devkit/build-angular @angular/material && yarn
 
 EXPOSE 4200
 

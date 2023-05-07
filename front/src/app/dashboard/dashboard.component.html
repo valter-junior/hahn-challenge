@@ -1,1 +1,25 @@
-<p>dashboard works!</p>
+<div>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button style="left: -10px;" (click)="sidenav.toggle()" mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <h1>Hahn Softaware</h1>
+            <span class="menu-spacer"></span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav>
+            <mat-nav-list>
+                <a mat-list-item [routerLink]="'/dashboard/product'"> Product </a>
+                <a mat-list-item [routerLink]="'/dashboard/create=product'"> Create Product </a>
+                <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Logout</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div style="height: 88vh;">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
