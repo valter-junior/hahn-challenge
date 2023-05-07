@@ -5,9 +5,18 @@ import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent },
-  { path: 'dashboard/product', component: ProductComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: 'auth', component: AuthComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'product',
+        component: ProductComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
