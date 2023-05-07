@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using static hahn.Service.Models.ProductModels;
 using static hahn.Service.Models.ProductModels.AddProduct;
 using static hahn.Service.Models.ProductModels.UpdateProduct;
+using Microsoft.AspNetCore.Authorization;
 
 namespace hahn.Application.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize("Bearer")]
+    [Authorize("Bearer")]
     public class ProductController : ControllerBase
     {
 
