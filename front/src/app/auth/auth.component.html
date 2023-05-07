@@ -1,1 +1,26 @@
-<p>auth works!</p>
+<body class="no-scrollbars" style="background-color: #008aab">
+    <mat-card style="top: 70px;">
+        <mat-card-content>
+            <form>
+                <img src="./../../assets/img/1611065484976.jpg" style="width: 150px;" alt="">
+                <h2 style="color: black;">Sign In</h2>
+                <mat-error *ngIf="!loginValid">
+                    The username and password were not recognized
+                </mat-error>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Email" name="username" required>
+                    <mat-error>
+                        Please provide a valid email address
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput type="password" placeholder="Password" name="password" required>
+                    <mat-error>
+                        Please provide a valid password
+                    </mat-error>
+                </mat-form-field>
+                <button mat-raised-button class="button-color">Login</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</body>
