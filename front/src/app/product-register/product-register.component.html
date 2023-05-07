@@ -1,28 +1,33 @@
-<body class="no-scrollbars">
-    <mat-card style="top: 50px;">
+<div class="no-scrollbars">
+    <mat-card style="padding-top: 10px;">
         <mat-card-content>
-            <form>
-                <h2 style="color: black;">Register</h2>
+            <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+                <h2 style="color: black;">Product</h2>
                 <mat-form-field appearance="outline">
-                    <input matInput placeholder="Name" name="name" required>
+                    <input matInput placeholder="Name" formControlName="name" required>
                     <mat-error>
                         Please provide a valid name
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <input matInput placeholder="Description" name="description" required>
+                    <input matInput placeholder="Description" formControlName="description" required>
                     <mat-error>
                         Please provide a valid description
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <input matInput placeholder="Value" type="value" name="value" required>
+                    <input matInput placeholder="Value" type="number" formControlName="value" required>
                     <mat-error>
                         Please provide a valid value
                     </mat-error>
                 </mat-form-field>
-                <button mat-raised-button class="button-color">Create</button>
+                <div mat-dialog-actions class="action">
+                    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button class="button-color" type="submit">{{data.id ? 'Update':
+                        'Create'}}</button>
+                </div>
             </form>
         </mat-card-content>
     </mat-card>
-</body>
+</div>

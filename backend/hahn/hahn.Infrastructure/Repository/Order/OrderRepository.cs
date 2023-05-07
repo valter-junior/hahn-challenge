@@ -64,12 +64,12 @@ namespace hahn.Infrastructure.Repositories
             await _db.SaveChangesAsync();
             return entity;
         }
-        public async Task<string> DeleteAsync(Order entity)
+        public async Task<Order> DeleteAsync(Order entity)
         {
 
             _db.Remove(entity);
             await _db.SaveChangesAsync();
-            return "Success!";
+            return entity;
 
         }
     }

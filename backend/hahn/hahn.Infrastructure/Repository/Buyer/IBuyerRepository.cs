@@ -19,6 +19,6 @@ namespace hahn.Infrastructure.Repositories
         Task<bool> VerifyIfEmailIsUnique(string email);
         Task<IdentityResult> AddBuyerAsync(Buyer buyer, string password);
         Task<Buyer> UpdateAsync(Buyer entity);
-        Task<string> DeleteAsync(Buyer entity);
+        Task<Buyer> DeleteAsync(Buyer entity);
     }
 }

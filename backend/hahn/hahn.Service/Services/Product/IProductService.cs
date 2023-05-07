@@ -14,6 +14,6 @@ namespace hahn.Service.Services
         Task<ResponseModel<Product>> AddAsync(AddProduct model);
         Task<ResponseModel<IEnumerable<Product>>> GetAllAsync();
         Task<ResponseModel<Product>> UpdateAsync(UpdateProduct model);
-        Task<ResponseModel<string>> DeleteAsync(Guid id);
+        Task<ResponseModel<Product>> DeleteAsync(Guid id);
     }
 }
