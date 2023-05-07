@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,4 +12,16 @@ import { Component } from '@angular/core';
 
 export class DashboardComponent {
 
+  constructor(
+
+    private router: Router,
+
+
+  ) {}
+
+  logOut() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    this.router.navigate(['']);
+  }
 }
