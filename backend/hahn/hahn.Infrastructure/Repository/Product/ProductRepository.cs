@@ -45,18 +45,13 @@ namespace hahn.Infrastructure.Repositories
             await _db.SaveChangesAsync();
             return entity;
         }
-        public async Task<string> DeleteAsync(Product entity)
+        public async Task<Product> DeleteAsync(Product entity)
         {
-            try
-            {
-                _db.Remove(entity);
-                await _db.SaveChangesAsync();
-                return "Success!";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+
+            _db.Remove(entity);
+            await _db.SaveChangesAsync();
+            return entity;
+
 
         }
     }

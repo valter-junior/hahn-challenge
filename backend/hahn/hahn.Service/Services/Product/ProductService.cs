@@ -74,24 +74,13 @@ namespace hahn.Service.Services
             }
         }
 
-        public async Task<ResponseModel<string>> DeleteAsync(Guid id)
+        public async Task<ResponseModel<Product>> DeleteAsync(Guid id)
         {
             try
             {
                 var product = await _repository.GetByIdAsync(id);
 
-                if (product != null)
-                {
-
-                    await _repository.DeleteAsync(product);
-
-                    return ResponseBuilder.OkResponse("Success");
-
-                }
-                else
-                {
-                    return ResponseBuilder.NotFoundResponse("Product does not exist.");
-                }
+                return ResponseBuilder.OkResponse(await _repository.DeleteAsync(product));
 
             }
             catch (Exception ex)

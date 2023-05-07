@@ -10,7 +10,7 @@ namespace hahn.Infrastructure.Repositories
         Task<IEnumerable<Product>> GetAllAsync(params Expression<Func<Product, object>>[] includes);
         Task<Product?> GetByIdAsync(Guid? id, params Expression<Func<Product, object>>[] includes);
         Task<Product> UpdateAsync(Product entity);
-        Task<string> DeleteAsync(Product entity);
+        Task<Product> DeleteAsync(Product entity);
         Task<bool> GetManagerById(string id);
 
 
