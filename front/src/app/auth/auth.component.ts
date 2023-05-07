@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+  hide = true;
+  loginValid = true;
 
+  
 }
+
+
+

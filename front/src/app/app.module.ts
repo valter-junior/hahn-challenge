@@ -9,7 +9,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table'
-
+import {MatCardModule} from '@angular/material/card'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -37,7 +43,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent],
