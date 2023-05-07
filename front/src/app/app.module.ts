@@ -24,6 +24,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ProductComponent } from './product/product.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductRegisterComponent } from './product-register/product-register.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AuthComponent,
     ProductComponent,
     DashboardComponent,
+    ProductRegisterComponent,
   ],
   imports: [
     BrowserModule,
