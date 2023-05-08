@@ -6,11 +6,13 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>f4dac5d4-5f1e-4c11-b8a6-a4938ba5c90d</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.12"/>
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.16" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />

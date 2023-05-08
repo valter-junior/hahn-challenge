@@ -9,6 +9,7 @@ using hahn.Service.Services;
 using hahn.Domain.Entities;
 using hahn.Infrastructure.Repositories;
 using hahn.Infrastructure.Repository.User;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,20 @@ var symetricSecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secur
 
 string connection = builder.Configuration.GetConnectionString("localMySqlConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connection, ServerVersion.AutoDetect(connection), b => b.MigrationsAssembly("hahn.Infrastructure")));
+
+if (args.Contains("--RunMigrations"))
+{
+   
+    
+
+    var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+    optionsBuilder.UseMySql(connection, ServerVersion.AutoDetect(connection), b => b.MigrationsAssembly("hahn.Infrastructure"));
+
+    await using var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+    await dbContext.Database.MigrateAsync();
+
+    return;
+}
 
 builder.Services.AddAuthentication(options =>
 {

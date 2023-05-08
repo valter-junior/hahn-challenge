@@ -9,7 +9,15 @@ import { AuthService } from './auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
+
+
+
 export class AuthComponent {
+
+  ngOnInit(): void {
+    this.getUserList();
+  }
+  
   hide = true;
   loginValid = true;
 
@@ -27,6 +35,15 @@ export class AuthComponent {
     this.empForm = this._fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('',),
+    });
+  }
+
+  getUserList(){
+    this._authService.getUserManager().subscribe({
+      next: (res) => {
+       console.log(res)
+      },
+      error: console.log,
     });
   }
 

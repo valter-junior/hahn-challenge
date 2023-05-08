@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.5"
 services:
   web:
       container_name: hahn
@@ -7,9 +7,10 @@ services:
         dockerfile: Dockerfile
 
       volumes:
+        - "/front/node_modules"
         - .:/front
       ports:
         - 4200:4200
-     
+      
       restart: always
       

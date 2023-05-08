@@ -14,4 +14,8 @@ export class AuthService {
     return this._http.post(environment.apiUrl + "auth/token", data);
   }
 
+  getUserManager(): Observable<any> {
+    return this._http.get(environment.apiUrl + "manager/add-manager");
+  }
+
 }

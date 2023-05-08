@@ -1,0 +1,69 @@
+version: '3.4'
+
+services:
+    database:
+        image: mysql:5.7
+        container_name: mysqldb
+        ports:
+            - "3306:3306"
+      
+        expose: 
+            - 3306
+        volumes:
+            - db-volume:/var/lib/mysql
+        restart: always
+        environment: 
+            MYSQL_ROOT_PASSWORD: 12345
+            MYSQL_USER: hahn
+            MYSQL_PASSWORD: 12345
+            MYSQL_DATABASE: hahn
+        networks:
+            - hahn
+            
+    hahn.init-db:
+        image: ${DOCKER_REGISTRY-}hahnapplication
+        build:
+            context: .
+            dockerfile: hahn.Application/Dockerfile
+
+        command:
+            - --RunMigrations 
+           
+
+        depends_on: 
+             database:
+                condition: service_started
+        
+        restart: no
+        environment: 
+
+            - ASPNETCORE_ENVIRONMENT=Development
+        networks:
+            - hahn
+
+    hahn.application:
+        image: ${DOCKER_REGISTRY-}hahnapplication
+        build:
+            context: .
+            dockerfile: hahn.Application/Dockerfile
+
+        depends_on: 
+             hahn.init-db:
+                condition: service_completed_successfully
+        ports:
+            - "5000:80"
+        restart: always
+        environment: 
+            - DBHOST=database
+            - ASPNETCORE_ENVIRONMENT=Development
+        networks:
+            - hahn
+
+networks:
+    hahn:
+        driver: bridge
+       
+volumes:
+  db-volume:
+
+
