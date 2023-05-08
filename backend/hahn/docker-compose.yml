@@ -34,7 +34,7 @@ services:
              database:
                 condition: service_started
         
-        restart: no
+        restart: "no"
         environment: 
 
             - ASPNETCORE_ENVIRONMENT=Development
