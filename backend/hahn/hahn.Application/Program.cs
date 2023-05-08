@@ -21,8 +21,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(
 
 if (args.Contains("--RunMigrations"))
 {
-   
-    
 
     var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
     optionsBuilder.UseMySql(connection, ServerVersion.AutoDetect(connection), b => b.MigrationsAssembly("hahn.Infrastructure"));
