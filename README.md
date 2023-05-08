@@ -5,6 +5,8 @@
 
 #It's essential to use the following versions for correct running:
 
+Use the branch "Main".
+
 First run the backend project
 
 # Running the backend project:
