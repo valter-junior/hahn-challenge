@@ -3,7 +3,7 @@
 
 ```bash
 
-#It's essential to use the following versions for correct running:
+#It's essential to use the following steps for correct running:
 
 Use the branch "Main".
 
