@@ -1,4 +1,4 @@
-# hahn-challenge
+# hahn-product-register
 
 
 ```bash
